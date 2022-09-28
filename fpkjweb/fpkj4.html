@@ -104,5 +104,20 @@
         <div style="background-color:red;">我的</div>
     </div>
 </body>
-
+<script>
+    function checkstate() {
+       var ckstate = sessionStorage;
+       if (ckstate.getItem('loginstate') == null) {
+           ckstate.setItem('loginstate', 0);
+           tologin();
+       }
+       else if (ckstate.getItem('loginstate') == 0) {
+           tologin();
+       }
+   }
+   function tologin() {
+      setTimeout("window.open('login.html', '_self')",1000);
+   }
+   checkstate();
+</script>
 </html>

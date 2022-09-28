@@ -17,7 +17,7 @@
 </head>
 <body>
     <div style="width: 40vw;height:16vw;margin: auto;vertical-align: middle;background-color: rgb(44, 44, 44);">
-        <img src="FPKJICON1.bmp" width="100%" style="margin-top: 8%;margin-bottom: 8%;height: 60%;">
+        <img src="FPKJICON.bmp" width="100%" style="margin-top: 8%;margin-bottom: 8%;height: 60%;">
     </div>
     <div style="background-color: RED;width:90vw;height:24vw;margin-left:5vw;">
             <div style="height: 50%;width:100%;line-height: 12vw;">
@@ -44,5 +44,21 @@
     changename.onclick=function(){
         username.innerHTML='666';
     }
+    
+    function checkstate() {
+        var ckstate = sessionStorage;
+        if (ckstate.getItem('loginstate') == null) {
+            ckstate.setItem('loginstate', 0);
+            tologin();
+        }
+        else if (ckstate.getItem('loginstate') == 0) {
+            tologin();
+        }
+    }
+    function tologin() {
+       setTimeout("window.open('login.html', '_self')",1000);
+    }
+    checkstate();
 </script>
+
 </html>
