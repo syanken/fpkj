@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="shortcut icon" href="fp.jpg">
+    <title>放屁科技-login</title>
+    <meta charset="utf-8">
+    <style>
+        * {
+            margin: 0;
+            color: white;
+            background-color: rgb(44, 44, 44);
+            user-select: none;
+        }
+
+        input {
+            color: black;
+            text-indent: 1em;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="width: 40vw;height:16vw;margin: auto;vertical-align: middle;">
+        <img src="FPKJICON.bmp" width="100%" style="margin-top: 8%;margin-bottom: 8%;height: 60%;">
+
+    </div>
+    <div style="height: 20vw;width:50vw;margin: auto;">
+        <div style="height: 50px;margin-top: 10px;">
+            <div>用户名：</div>
+            <input style="width:100%;height: 25px ;border: 0;border-radius: 5vw;background-color: aliceblue;"
+                type="text" class="username">
+        </div>
+        <div style="height: 50px;margin-top: 10px;">
+            <div>密码：</div>
+            <input style="width:100%;height: 25px;border: 0;border-radius: 5vw;background-color: aliceblue;"
+                type="password" class="password">
+        </div>
+        <div style="height: 50px;margin-top: 10px;">
+            <div>验证码：</div>
+            <input style="width:25%;height: 25px;border: 0;border-radius: 5vw;background-color: aliceblue;" type="text"
+                maxlength="4">
+            <div style="background-color:aliceblue;height: 25px;width:50px;float: right;">
+            </div>
+            <div style="height: 25px;margin-top: 10px;">
+                <a href="#">未注册？点击注册。(不用点直接填)</a>
+            </div>
+            <div style="height: 25px;margin-top: 10px;">
+                <input type="checkbox" style="float: left;height: 20.67px;width: 20.67px;" class="checkbox">
+                <div style="float: left;">我已阅读病危通知书。
+                </div>
+            </div>
+            <div class='loginbtn'
+                style="background-color:greenyellow;color: black;width: 80%;height:50px;margin: auto;line-height: 50px;text-align: center;margin-top:5vw ;border-radius: 4vw;">
+                登录
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var loginbtn = document.querySelector('.loginbtn');
+    var check = document.querySelector('.checkbox');
+    var username = document.querySelector('.username');
+    var password = document.querySelector('.password');
+    var storge = window.localStorage;
+    var ckstate = sessionStorage;
+    loginbtn.onclick = function () {
+        if (check.checked) {
+            // storge.setItem('username',username.value);
+            // storge.setItem('password',password.value);
+            // storge.setItem(username.value,password.value);
+            // window.open("fpkj1.html", "_self");
+            // storge.clear();
+            if(username.value == '' || password.value == '')
+            {
+                alert('请检查用户名和密码');
+
+            }
+             else if (username.value == storge.getItem('username') && password.value == storge.getItem('password')) {
+                
+                ckstate.setItem('loginstate', 1);
+                window.open('fpkj1.html', '_self');
+            }
+            else{
+                alert('你未注册，确认后自动帮你注册');
+                storge.setItem('username', username.value);
+                storge.setItem('password', password.value);
+                ckstate.setItem('loginstate', 1);
+                window.open('fpkj1.html', '_self');
+            }
+        } else { alert('你未勾选已阅读病危通知书'); }
+    }
+
+</script>
+
+</html>

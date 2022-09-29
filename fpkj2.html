@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="fp.jpg">
+    <title>放屁科技-信息广场</title>
+    <meta charset="utf-8">
+    <style> 
+*{
+        margin: 0;
+        color: white;
+        background-color: rgb(44, 44, 44);
+        user-select:none;
+    }
+    .footer {
+        display: flex;
+        width: 100%;
+        height: 8vw;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        z-index: 3;
+    }
+    .footer div{
+        flex: 1;
+        height: 8vw;
+        background-color: yellow;
+        float: left;
+        color: black;
+        line-height: 8vw;
+    }
+    
+    </style>
+</head>
+<body>
+    <div style="width: 40vw;height:16vw;margin: auto;vertical-align: middle;" >
+        <img src="FPKJICON.bmp" width="100%"  style="margin-top: 8%;margin-bottom: 8%;height: 60%;">
+     </div>    <div style="text-align: center;line-height: 100px;height: 200px;">内测中，敬请期待</div>
+    <div class='footer'>
+        <div onclick="window.open('fpkj1.html','_self')">首页</div>
+        <div style="background-color:red;">广场</div>
+        <div onclick="window.open('fpkj3.html','_self')">收藏</div>
+        <div onclick="window.open('fpkj4.html','_self')">我的</div>
+    </div>
+</body>
+<script>
+     function checkstate() {
+        var ckstate = sessionStorage;
+        if (ckstate.getItem('loginstate') == null) {
+            ckstate.setItem('loginstate', 0);
+            tologin();
+        }
+        else if (ckstate.getItem('loginstate') == 0) {
+            tologin();
+        }
+    }
+    function tologin() {
+       setTimeout("window.open('login.html', '_self')",1000);
+    }
+    checkstate();
+</script>
+</html>
